@@ -1,0 +1,9 @@
+db.sqlite3
+Main/__pycache__/admin.cpython-35.pyc
+Main/__pycache__/models.cpython-35.pyc
+Main/__pycache__/urls.cpython-35.pyc
+Main/__pycache__/views.cpython-35.pyc
+Main/migrations/__pycache__/0011_notification.cpython-35.pyc
+Main/migrations/__pycache__/0012_notification_user_owner.cpython-35.pyc
+db.sqlite3
+db.sqlite3
