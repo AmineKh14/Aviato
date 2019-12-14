@@ -53,5 +53,15 @@ def index(request):
     return render(request,"index.html",context)
 
 
+def search(request):
+    query =request.GET.get('q')
+    results = Utilisateur.objects.filter(Q(username__contains=query))
+    print(results.count())
+
+    context ={
+        'results':results,
+            }
+    return render(request,"search.html",context)
+
 
 

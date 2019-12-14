@@ -32,7 +32,7 @@ STATE = (
 )
 
 class Utilisateur(AbstractUser):
-    role = models.CharField(choices=ROLE,default='etudiant',max_length=10)
+    role = models.CharField(choices=ROLE,default='client',max_length=10)
     banned=models.BooleanField(default=False)
 
 
