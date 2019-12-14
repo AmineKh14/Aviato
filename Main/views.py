@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from .forms import *
+from .forms import SignUpForm
 from django.http import HttpResponse
 from django.db.models import Count, F, Q
 from django.contrib.auth import login, authenticate,logout
@@ -17,6 +17,24 @@ from django.utils.datastructures import MultiValueDictKeyError
 
 
 def login_request(request):
+    if request.method == 'POST' and 'sngup' in request.POST:
+        
+        form1 = SignUpForm(request.POST)
+        if form1.is_valid():
+            
+            utilisateur = form1.save()
+            utilisateur.refresh_from_db()  # load the profile instance created by the signal
+            
+            
+            #username = form.cleaned_data.get('username')
+            #raw_password = form.cleaned_data.get('password1')
+            #user = authenticate(username=username, password=raw_password)
+            #login(request, user)
+            utilisateur.save()
+            return redirect('home')        
+    else:
+        form1 = SignUpForm()
+
     if request.method == "POST":
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -33,7 +51,7 @@ def login_request(request):
             messages.info(request,"Invalid Syntaxe")
     form = AuthenticationForm()
     redirect('home')
-    return render(request,"login.html", {"form":form})
+    return render(request,"login.html", {"form":form,"form1":form1})
 
 
 
