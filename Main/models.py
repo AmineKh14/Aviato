@@ -16,11 +16,14 @@ ROLE = (
     )
 
 JOB = (
-        ('1cpi', '1CPI'),
-        ('2cpi', '2CPI'),
-        ('1cs', '1CS'),
-        ('2cs', '2CS'),
-        ('3cs', '3CS'),
+        ("plumber","Pulmber"),
+        ("welder","Welder"),
+        ("maneuver","Maneuver"),
+        ("builder","Builder"),
+        ("electrician","Electrician"),
+        ("carpenter","Carpenter"),
+        ("mover","Mover"),
+        ("exterminator","Exterminator") 
     )
 
 STATE = (
@@ -42,6 +45,7 @@ class Profile (models.Model):
     image = models.ImageField(null=True,upload_to='profile_pics',default='profile_pics/default.png')
     state = models.BooleanField(choices=STATE)
     rating = models.IntegerField()
+    ville = models.CharField(max_length=20)
 
 class Historique(models.Model):
     client = models.OneToOneField(Utilisateur,on_delete=models.CASCADE,related_name="client")
