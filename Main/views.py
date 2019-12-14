@@ -36,8 +36,22 @@ def login_request(request):
     return render(request,"login.html", {"form":form})
 
 
+
+def logout_request(request):
+    print("sasasa")
+    logout(request)
+    return redirect('login')
+
+
+@login_required
 def index(request):
-    return render(request,"index.html")
+    essai = Utilisateur.objects.all()
+
+    context ={
+        'essai':essai,
+            }
+    return render(request,"index.html",context)
+
 
 
 

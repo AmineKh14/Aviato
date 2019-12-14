@@ -40,10 +40,10 @@ class Profile (models.Model):
     
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name="profile")
     numero_telephone = models.IntegerField(null=True)
-    job = models.CharField(choices=JOB,default='1cpi',max_length=4,null=True)
+    job = models.CharField(choices=JOB,null=True,max_length=20)
     bio = models.TextField(null=True,blank=True)
     image = models.ImageField(null=True,upload_to='profile_pics',default='profile_pics/default.png')
-    state = models.BooleanField(choices=STATE)
+    state = models.CharField(choices=STATE,max_length=20)
     rating = models.IntegerField()
     ville = models.CharField(max_length=20)
 
